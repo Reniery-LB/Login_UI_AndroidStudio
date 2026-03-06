@@ -22,6 +22,7 @@ import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.filled.ArrowBack
 import androidx.compose.material.icons.filled.Email
 import androidx.compose.material.icons.filled.Lock
 import androidx.compose.material.icons.filled.Person
@@ -53,20 +54,19 @@ class MainActivity : ComponentActivity() {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
         setContent {
-            Login()
+            Register()
         }
     }
 }
 
 @Composable
-@Preview
 fun Login() {
     var email by remember { mutableStateOf("") }
     var password by remember { mutableStateOf("") }
 
     Box(modifier = Modifier.fillMaxSize().background(Color.White)) {
         Column(
-            modifier = Modifier.fillMaxSize().padding(24.dp),
+            modifier = Modifier.fillMaxSize().padding(50.dp),
             horizontalAlignment = Alignment.CenterHorizontally
         ) {
             Text(
@@ -128,7 +128,7 @@ fun Login() {
                 contentAlignment = Alignment.Center,
             ) {
                 Text(
-                    text = "Log In",
+                    text = "Login",
                     color = Color.White,
                     fontWeight = FontWeight.Bold,
                     fontSize = 25.sp
@@ -178,6 +178,124 @@ fun Login() {
 }
 
 @Composable
+@Preview
+fun Register() {
+    var username by remember { mutableStateOf("") }
+    var email by remember { mutableStateOf("") }
+    var password by remember { mutableStateOf("") }
+    var repeatPassword by remember { mutableStateOf("") }
+
+    Box(
+        modifier = Modifier.fillMaxSize().background(Color.White)
+    ) {
+        Column(
+            modifier = Modifier.fillMaxSize().padding(all = 50.dp),
+            horizontalAlignment = Alignment.CenterHorizontally
+        ) {
+            Text(
+                text = "Create Account",
+                fontSize = 30.sp,
+                fontWeight = FontWeight.Bold
+            )
+
+            Spacer(modifier = Modifier.height(50.dp))
+
+            TextField(
+                value = username,
+                onValueChange = { username = it },
+                placeholder = { Text("User Name", color = Color.Gray) },
+                leadingIcon = {
+                    Icon(imageVector = Icons.Default.Person, contentDescription = null, tint = Color.Black)
+                },
+                modifier = Modifier.fillMaxWidth().padding(top = 20.dp)
+                    .border(width = 1.dp, Color.Gray, shape = RoundedCornerShape(size = 30.dp)),
+                shape = RoundedCornerShape(30.dp),
+                colors = TextFieldDefaults.colors(
+                    focusedContainerColor = Color.White,
+                    unfocusedContainerColor = Color.White,
+                    focusedIndicatorColor = Color.Transparent,
+                    unfocusedIndicatorColor =  Color.Transparent
+                )
+            )
+            TextField(
+                value = email,
+                onValueChange = { email = it },
+                placeholder = {Text("E-mail", color = Color.Gray)},
+                leadingIcon = {
+                    Icon(imageVector = Icons.Default.Email, contentDescription = null, tint = Color.Black)
+                },
+                modifier = Modifier.fillMaxWidth().padding(top = 20.dp)
+                    .border(width = 1.dp, Color.Gray, shape = RoundedCornerShape(size = 30.dp)),
+                shape = RoundedCornerShape(30.dp),
+                colors = TextFieldDefaults.colors(
+                    focusedContainerColor = Color.White,
+                    unfocusedContainerColor = Color.White,
+                    focusedIndicatorColor = Color.Transparent,
+                    unfocusedIndicatorColor =  Color.Transparent
+                )
+            )
+            TextField(
+                value = password,
+                onValueChange = { password = it },
+                placeholder = {Text("Password", color = Color.Gray)},
+                leadingIcon = {
+                    Icon(imageVector = Icons.Default.Lock, contentDescription = null, tint = Color.Black)
+                },
+                modifier = Modifier.fillMaxWidth().padding(top = 20.dp)
+                    .border(width = 1.dp, Color.Gray, shape = RoundedCornerShape(size = 30.dp)),
+                shape = RoundedCornerShape(30.dp),
+                colors = TextFieldDefaults.colors(
+                    focusedContainerColor = Color.White,
+                    unfocusedContainerColor = Color.White,
+                    focusedIndicatorColor = Color.Transparent,
+                    unfocusedIndicatorColor =  Color.Transparent
+                )
+            )
+            TextField(
+                value = repeatPassword,
+                onValueChange = { repeatPassword = it },
+                placeholder = {Text("Repeat password", color = Color.Gray)},
+                leadingIcon = {
+                    Icon(imageVector = Icons.Default.Lock, contentDescription = null, tint = Color.Black)
+                },
+                modifier = Modifier.fillMaxWidth().padding(top = 20.dp)
+                    .border(width = 1.dp, Color.Gray, shape = RoundedCornerShape(size = 30.dp)),
+                shape = RoundedCornerShape(30.dp),
+                colors = TextFieldDefaults.colors(
+                    focusedContainerColor = Color.White,
+                    unfocusedContainerColor = Color.White,
+                    focusedIndicatorColor = Color.Transparent,
+                    unfocusedIndicatorColor =  Color.Transparent
+                )
+            )
+            Box(
+                modifier = Modifier.fillMaxWidth().padding(top = 40.dp)
+                    .background(
+                        color = Color(0xFF524eb6),
+                        shape = RoundedCornerShape(30.dp)
+                    )
+                    .padding(vertical = 18.dp),
+                contentAlignment = Alignment.Center
+            ) {
+                Text(
+                    text = "Create Account",
+                    color = Color.White,
+                    fontWeight = FontWeight.Bold,
+                    fontSize = 25.sp
+                )
+            }
+
+            Spacer(modifier = Modifier.padding(top = 30.dp))
+            
+            Icon(
+                imageVector = Icons.Default.ArrowBack, contentDescription = null,
+                modifier = Modifier.size(60.dp)
+            )
+        }
+    }
+}
+
+@Composable
 fun Home() {
     Box(
         modifier = Modifier.fillMaxSize().background(Color.White)
@@ -194,7 +312,6 @@ fun Home() {
                 modifier = Modifier.fillMaxWidth().padding(bottom = 24.dp),
                 contentScale = ContentScale.Fit
             )
-
             Text(
                 text = "Hello",
                 modifier = Modifier.padding(top = 40.dp),
@@ -207,7 +324,6 @@ fun Home() {
                 color = Color.Gray,
                 textAlign = TextAlign.Center
             )
-
             Box(
                 modifier = Modifier.padding(top = 32.dp)
                     .background(
