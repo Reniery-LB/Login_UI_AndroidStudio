@@ -10,6 +10,7 @@ import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
+import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.width
@@ -59,59 +60,54 @@ fun WelcomeScreen(navController: NavHostController) {
                 color = Color.Gray,
                 textAlign = TextAlign.Center
             )
-            Box(
-                modifier = Modifier.padding(top = 32.dp)
-                    .background(
-                        color = Color(0xFF524eb6),
-                        shape = RoundedCornerShape(30.dp)
-                    )
-                    .padding(horizontal = 90.dp, vertical = 14.dp),
-                contentAlignment = Alignment.Center,
+
+            Button(
+                onClick = {
+                    navController.navigate("login")
+                },
+                modifier = Modifier.fillMaxWidth().padding(top = 32.dp).height(55.dp),
+                shape = RoundedCornerShape(30.dp),
+                colors = androidx.compose.material3.ButtonDefaults.buttonColors(
+                    containerColor = Color(0xFF524eb6)
+                )
             ) {
-                Button(
-                    onClick = {
-                        navController.navigate("login")
-                    }
-                ) {
-                    Text(
-                        text = "Login",
-                        color = Color.White,
-                        fontWeight = FontWeight.Bold,
-                        fontSize = 16.sp
-                    )
-                }
+                Text(
+                    text = "Login",
+                    fontWeight = FontWeight.Bold,
+                    fontSize = 18.sp,
+                    color = Color.White
+                )
             }
 
-            Box(
-                modifier = Modifier.padding(top = 16.dp).fillMaxWidth()
-                    .padding(horizontal = 60.dp, vertical = 12.dp)
-                    .border(
-                        width = 2.dp,
-                        color = Color(0xFF524eb6),
-                        shape = RoundedCornerShape(30.dp)
-                    )
-                    .padding(vertical = 14.dp),
-                contentAlignment = Alignment.Center,
+            Button(
+                onClick = {
+                    navController.navigate("signup")
+                },
+                modifier = Modifier.fillMaxWidth().padding(top = 16.dp).height(55.dp),
+                shape = RoundedCornerShape(30.dp),
+                colors = androidx.compose.material3.ButtonDefaults.buttonColors(
+                    containerColor = Color.Transparent
+                ),
+                border = androidx.compose.foundation.BorderStroke(
+                    2.dp,
+                    Color(0xFF524eb6)
+                )
             ) {
-                Button(
-                    onClick = {
-                        navController.navigate("signup")
-                    }
-                ) {
-                    Text(
-                        text = "Sign Up",
-                        color = Color.White,//(0xFF524eb6),
-                        fontSize = 16.sp,
-                        fontWeight = FontWeight.Bold
-                    )
-                }
+                Text(
+                    text = "Sign Up",
+                    color = Color(0xFF524eb6),
+                    fontWeight = FontWeight.Bold,
+                    fontSize = 18.sp
+                )
             }
+
             Text(
                 text = "Sign up using",
                 color = Color.Gray,
                 textAlign = TextAlign.Center,
                 modifier = Modifier.fillMaxWidth().padding(top = 24.dp)
             )
+
             Row(
                 modifier = Modifier.padding(top = 16.dp),
                 horizontalArrangement = Arrangement.Center,

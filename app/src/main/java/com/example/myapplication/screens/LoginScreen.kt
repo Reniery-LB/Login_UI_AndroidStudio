@@ -15,8 +15,10 @@ import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.filled.Email
 import androidx.compose.material.icons.filled.Lock
 import androidx.compose.material.icons.filled.Person
+import androidx.compose.material3.Button
 import androidx.compose.material3.Icon
 import androidx.compose.material3.Text
 import androidx.compose.material3.TextField
@@ -74,7 +76,7 @@ fun LoginScreen(navController: NavController) {
                 },
                 placeholder = { Text("E-Mail", color = Color.Gray) },
                 leadingIcon = {
-                    Icon(imageVector = Icons.Default.Person, contentDescription = null, tint = Color.Black)
+                    Icon(imageVector = Icons.Default.Email, contentDescription = null, tint = Color.Black)
                 },
                 modifier = Modifier.fillMaxWidth().padding(top = 60.dp)
                     .border(1.dp, Color.Gray, RoundedCornerShape(30.dp)),
@@ -113,14 +115,16 @@ fun LoginScreen(navController: NavController) {
                 color = Color.Gray,
                 fontSize = 20.sp
             )
-            Box(
-                modifier = Modifier.fillMaxWidth().padding(top = 52.dp)
-                    .background(
-                        color = Color(0xFF524eb6),
-                        shape = RoundedCornerShape(30.dp)
-                    )
-                    .padding(vertical = 20.dp),
-                contentAlignment = Alignment.Center,
+
+            Button(
+                onClick = {
+                    navController.navigate("welcome")
+                },
+                modifier = Modifier.fillMaxWidth().padding(top = 52.dp).padding(vertical = 20.dp),
+                shape = RoundedCornerShape(30.dp),
+                colors = androidx.compose.material3.ButtonDefaults.buttonColors(
+                    containerColor = Color(0xFF524eb6)
+                )
             ) {
                 Text(
                     text = "Login",
@@ -129,6 +133,7 @@ fun LoginScreen(navController: NavController) {
                     fontSize = 25.sp
                 )
             }
+
             Text(
                 text = "Don't have an account? Create",
                 modifier = Modifier.padding(top = 20.dp),
